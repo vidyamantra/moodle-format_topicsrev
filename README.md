@@ -1,14 +1,16 @@
-moodle-format_topicsrev
+Reverse Topics Format 
 =======================
+
+This is a clone of the Moodle topics course format except the topics are listed in reverse order.
+
+All of the hard work was done by Krishna Pratap Singh.
+
+As a teacher you can show perticular topic one by one and should leave them unhidden so that they do become visible when that week arrives.
+
+
 Instructions :
 
-1. you have downloaded the "moodle-format_topicsrev" reposiotry from github.
+Unzip the zip folder and place the topicsrev folder in directory  "/moodle/course/format/" 
 
-2. now rename the downloaded zip file and folder into name "topicsrev".
-
-3. copy this folder and paste into /moodle/course/format/
-
-4. or you can directly drag and drop it, into moodle-> site administration -> plugins -> install plugins 
-
-5. now create the new course and select format "Reverse Topic Format".
+Now login to your Moodle site  and go to Administration > Site administration > Notification , you will see a Notification for course format to be installed. Click “Upgrade Moodle Database now” button to continue for the installation procedure.
 
