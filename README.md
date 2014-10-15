@@ -19,10 +19,9 @@ Description
 
 Reverse Topic Format is a newly generated course format for Moodle. This provides the sequential list of all topics. 
 
-Here we provide the higher order of topic first and go one by one through lower order of topics, it becomes a mature and systematic approach 
-for handling the course topics.
+Here we provide the higher order of topic first and go one by one through lower order of topics, it becomes a mature and systematic approach for handling the course topics.
 
-Basically this is a clone of the Moodle topics course format except the topics are listed in reverse order.
+Basically this is a clone of the Moodle topics course format, except the topics are listed in reverse order.
 
 Here, different type of users have own privileges like Teacher can hide/show the particular topic and Student can able to see the visible topics and further lower order topics as well. 
 
@@ -34,33 +33,27 @@ Requirements
 * Moodle 2.7.0+
 
 
-
 Installation
 -------------
 
-Unpack the "moodle-format_topicsrev.zip" and rename that unzipped folder to "topicsrev" and  place this folder into '/course/format/' directory of moodle.
+1. Unpack the "moodle-format_topicsrev.zip" and rename that unzipped folder to "topicsrev" and place this folder into '/course/format/' directory of moodle.
    
-The file structure for topicsrev would be something like. 
+2. The file structure for topicsrev would be something like. 
 	[site-root]/course/format/topicsrev
-    
-	
+
+3. Now login to your Moodle site and go to Administration -> Site administration -> Notification, you will see a Notification for course format to be installed. Click “Upgrade Moodle Database now” button to continue for the installation procedure.    
+
+
 Dependencies
 --------------
- "Reverse Topics Format" have no dependencies.
-
-	
-Execution
---------------
-
-Now login to your Moodle site  and go to Administration -> Site administration -> Notification , you will see a Notification for course format to be installed. Click “Upgrade Moodle Database now” button to continue for the installation procedure.
-
-Enjoy!
+  "Reverse Topics Format" have no dependencies.
 
 
 Bugs/patches
 -------------
 
 Feel free to send bug reports (and/or patches!) to the 
+
 
 Author:-
 -------------
