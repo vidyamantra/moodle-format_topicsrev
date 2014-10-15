@@ -21,7 +21,7 @@ Reverse Topic Format is a newly generated course format for Moodle. This provide
 
 Here we provide the higher order of topic first and go one by one through lower order of topics, it becomes a mature and systematic approach for handling the course topics.
 
-Basically this is a clone of the Moodle topics course format, except the topics are listed in reverse order.
+Basically this is a clone of the Moodle topics course format except the topics are listed in reverse order.
 
 Here, different type of users have own privileges like Teacher can hide/show the particular topic and Student can able to see the visible topics and further lower order topics as well. 
 
