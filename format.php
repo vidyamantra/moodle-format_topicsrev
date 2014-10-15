@@ -19,7 +19,7 @@
  *
  * @package format_topicsrev
  * @copyright 2014 krishna pratap singh
- * @author krishna pratap singh
+ * @author krishna pratap singh(krishna@vidyamantra.com)
  * @license http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
 
