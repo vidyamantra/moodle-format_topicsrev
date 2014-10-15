@@ -347,9 +347,7 @@ class format_topicsrev_renderer extends format_section_renderer_base {
 
         $forward = $sectionno + 1;
         while ($forward <= $course->numsections and empty($links['next'])) {
-                $nextsectiondates = course_get_format($course)->get_section_dates($sections[$forward]);
-            $shownext = $nextsectiondates->start<time();
-            if($shownext){
+        
                 if ($sections[$forward]->uservisible) {
                     $params = array();
                     if (!$sections[$forward]->visible) {
@@ -361,7 +359,6 @@ class format_topicsrev_renderer extends format_section_renderer_base {
                 }
             }
             $forward++;
-        }
         return $links;
     }
 }
