@@ -18,23 +18,17 @@
  * Renderer for outputting the topicsrev course format.
  *
  * @package format_topicsrev
- * @copyright 2014 Krishna pratap singh
+ * @copyright 2014 onwards Krishna Pratap Singh  {@link krishna@vidyamanntra.com}
  * @license http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
- * @since Moodle 2.3
  */
 
 
 defined('MOODLE_INTERNAL') || die();
 require_once($CFG->dirroot.'/course/format/renderer.php');
 require_once($CFG->dirroot.'/course/format/topicsrev/lib.php');
-//require_once($CFG->libdir.'/moodlelib.php');
-
 
 /**
  * Basic renderer for topicsrev format.
- *
- * @copyright 2012 Dan Poltawski
- * @license http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
 class format_topicsrev_renderer extends format_section_renderer_base {
 
@@ -147,6 +141,7 @@ class format_topicsrev_renderer extends format_section_renderer_base {
         // Now the list of sections..
         echo $this->start_section_list();
         $allsections = $modinfo->get_section_info_all();
+        
         //only require 0 + number of sections in course settings
         $requiredsections = array_slice($allsections, 0, $course->numsections+1);
         $revmodinfo = array_reverse($requiredsections);//reverse sections
@@ -169,8 +164,6 @@ class format_topicsrev_renderer extends format_section_renderer_base {
                 continue;
             }
             
-          //  $thissectiondates = course_get_format($course)->get_section_dates($thissection);
-         //   $thefuture = $thissectiondates->start>time();
             if(!$started){
                  $started = true;
             }

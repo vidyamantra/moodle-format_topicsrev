@@ -17,22 +17,14 @@
 /**
  * This file contains main class for the course format Topic
  *
- * @since     Moodle 2.0
  * @package   format_topicsrev
- * @copyright 2014 Krishna pratap singh
+ * @copyright 2014 onwards Krishna Pratap Singh  {@link krishna@vidyamanntra.com}
  * @license   http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
 
 defined('MOODLE_INTERNAL') || die();
 require_once($CFG->dirroot. '/course/format/lib.php');
 
-/**
- * Main class for the TopicsReverse course format
- *
- * @package    format_topicsrev
- * @copyright  2012 Marina Glancy
- * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
- */
 class format_topicsrev extends format_base {
 
     /**

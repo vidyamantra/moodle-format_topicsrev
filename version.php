@@ -19,15 +19,14 @@
  *
  * @package    format
  * @subpackage topicsrev
- * @copyright  1999 onwards Martin Dougiamas (http://dougiamas.com)
+ * @copyright 2014 onwards Krishna Pratap Singh  {@link krishna@vidyamanntra.com}
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
- * @outhor     Krishna Pratap Singh(krishna@vidyamantra.com)
  */
 
 defined('MOODLE_INTERNAL') || die();
 
-$plugin->version   = 2014051200;        // The current plugin version (Date: YYYYMMDDXX).
+$plugin->version   = 2014101500;        // The current plugin version (Date: YYYYMMDDXX).
 $plugin->requires  = 2014050800;        // Requires this Moodle version.
 $plugin->component = 'format_topicsrev';    // Full name of the plugin (used for diagnostics).
-$plugin->release = '1.2 for Moodle 2.4+';
+$plugin->release = '1.0 for Moodle 2.7+';
 $plugin->maturity  = MATURITY_RC;

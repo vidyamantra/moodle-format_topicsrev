@@ -18,8 +18,7 @@
  * Topicsrev course format.  Display the whole course as "topicsrev" made of modules.
  *
  * @package format_topicsrev
- * @copyright 2014 krishna pratap singh
- * @author krishna pratap singh(krishna@vidyamantra.com)
+ * @copyright 2014 onwards Krishna Pratap Singh  {@link krishna@vidyamanntra.com}
  * @license http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
 
@@ -27,7 +26,6 @@ defined('MOODLE_INTERNAL') || die();
 
 require_once($CFG->libdir.'/filelib.php');
 require_once($CFG->libdir.'/completionlib.php');
-//require_once($CFG->libdir.'/moodlelib.php');
 
 // Horrible backwards compatible parameter aliasing..
 if ($topic = optional_param('topic', 0, PARAM_INT)) {
@@ -37,7 +35,6 @@ if ($topic = optional_param('topic', 0, PARAM_INT)) {
     redirect($url);
 }
 // End backwards-compatible aliasing..
-
 $context = context_course::instance($course->id);
 
 if (($marker >=0) && has_capability('moodle/course:setcurrentsection', $context) && confirm_sesskey()) {
@@ -67,7 +64,6 @@ if (!$PAGE->user_is_editing()){
 		$renderer->print_multiple_section_page($course, $sections, $mods, $modnames, $modnamesused);
 	}
 }
-
 
 // Include course format js module
 $PAGE->requires->js('/course/format/topicsrev/format.js');
