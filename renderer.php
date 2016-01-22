@@ -155,7 +155,8 @@ class format_topicsrev_renderer extends format_section_renderer_base {
                 // 0-section is displayed a little different then the others
                 if ($thissection->summary or !empty($modinfo->sections[0]) or $PAGE->user_is_editing()) {
                     echo $this->section_header($thissection, $course, false, 0);
-                    print_section($course, $thissection, null, null, true, "100%", false, 0);
+                    //print_section($course, $thissection, null, null, true, "100%", false, 0);
+                    echo $this->courserenderer->course_section_cm_list($course, $thissection, 0);
                     if ($PAGE->user_is_editing()) {
                         print_section_add_menus($course, 0, null, false, false, 0);
                     }
@@ -195,7 +196,8 @@ class format_topicsrev_renderer extends format_section_renderer_base {
                 if(($started && !$ended || $ended) ){
                     echo $this->section_header($thissection, $course, false, 0);
                     if ($thissection->uservisible) {
-                        print_section($course, $thissection, null, null, true, "100%", false, 0);
+                        //print_section($course, $thissection, null, null, true, "100%", false, 0);
+                        echo $this->courserenderer->course_section_cm_list($course, $thissection, 0);
                         if ($PAGE->user_is_editing()) {
                             print_section_add_menus($course, $section, null, false, false, 0);
                         }
