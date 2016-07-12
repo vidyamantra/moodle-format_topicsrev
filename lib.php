@@ -17,23 +17,15 @@
 /**
  * This file contains main class for the course format Topic
  *
- * @since     Moodle 2.0
- * @package   format_topics
- * @copyright 2009 Sam Hemelryk
+ * @package   format_topicsrev
+ * @copyright 2014 onwards Krishna Pratap Singh  {@link krishna@vidyamanntra.com}
  * @license   http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
 
 defined('MOODLE_INTERNAL') || die();
 require_once($CFG->dirroot. '/course/format/lib.php');
 
-/**
- * Main class for the Topics course format
- *
- * @package    format_topics
- * @copyright  2012 Marina Glancy
- * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
- */
-class format_topics extends format_base {
+class format_topicsrev extends format_base {
 
     /**
      * Returns true if this course format uses sections
@@ -57,29 +49,10 @@ class format_topics extends format_base {
         if ((string)$section->name !== '') {
             return format_string($section->name, true,
                     array('context' => context_course::instance($this->courseid)));
-        } else {
-            return $this->get_default_section_name($section);
-        }
-    }
-
-    /**
-     * Returns the default section name for the topics course format.
-     *
-     * If the section number is 0, it will use the string with key = section0name from the course format's lang file.
-     * If the section number is not 0, the base implementation of format_base::get_default_section_name which uses
-     * the string with the key = 'sectionname' from the course format's lang file + the section number will be used.
-     *
-     * @param stdClass $section Section object from database or just field course_sections section
-     * @return string The default value for the section name.
-     */
-    public function get_default_section_name($section) {
-        if ($section->section == 0) {
-            // Return the general section.
+        } else if ($section->section == 0) {
             return get_string('section0name', 'format_topics');
         } else {
-            // Use format_base::get_default_section_name implementation which
-            // will display the section name in "Topic n" format.
-            return parent::get_default_section_name($section);
+            return get_string('topic').' '.$section->section;
         }
     }
 
@@ -94,7 +67,6 @@ class format_topics extends format_base {
      * @return null|moodle_url
      */
     public function get_view_url($section, $options = array()) {
-        global $CFG;
         $course = $this->get_course();
         $url = new moodle_url('/course/view.php', array('id' => $course->id));
 
@@ -121,7 +93,7 @@ class format_topics extends format_base {
             if ($sectionno != 0 && $usercoursedisplay == COURSE_DISPLAY_MULTIPAGE) {
                 $url->param('section', $sectionno);
             } else {
-                if (empty($CFG->linkcoursesections) && !empty($options['navigation'])) {
+                if (!empty($options['navigation'])) {
                     return null;
                 }
                 $url->set_anchor('section-'.$sectionno);
@@ -163,19 +135,6 @@ class format_topics extends format_base {
 
         // check if there are callbacks to extend course navigation
         parent::extend_course_navigation($navigation, $node);
-
-        // We want to remove the general section if it is empty.
-        $modinfo = get_fast_modinfo($this->get_course());
-        $sections = $modinfo->get_sections();
-        if (!isset($sections[0])) {
-            // The general section is empty to find the navigation node for it we need to get its ID.
-            $section = $modinfo->get_section_info(0);
-            $generalsection = $node->get($section->id, navigation_node::TYPE_SECTION);
-            if ($generalsection) {
-                // We found the node - now remove it.
-                $generalsection->remove();
-            }
-        }
     }
 
     /**
@@ -311,7 +270,7 @@ class format_topics extends format_base {
             $numsections = $numsections[0];
             if ($numsections > $maxsections) {
                 $element = $mform->getElement('numsections');
-                for ($i = $maxsections+1; $i <= $numsections; $i++) {
+                for ($i = $numsections; $i >= $maxsections+1; $i--) {
                     $element->addOption("$i", $i);
                 }
             }
@@ -334,8 +293,8 @@ class format_topics extends format_base {
      */
     public function update_course_format_options($data, $oldcourse = null) {
         global $DB;
-        $data = (array)$data;
         if ($oldcourse !== null) {
+            $data = (array)$data;
             $oldcourse = (array)$oldcourse;
             $options = $this->course_format_options();
             foreach ($options as $key => $unused) {
@@ -356,21 +315,8 @@ class format_topics extends format_base {
                 }
             }
         }
-        $changed = $this->update_format_options($data);
-        if ($changed && array_key_exists('numsections', $data)) {
-            // If the numsections was decreased, try to completely delete the orphaned sections (unless they are not empty).
-            $numsections = (int)$data['numsections'];
-            $maxsection = $DB->get_field_sql('SELECT max(section) from {course_sections}
-                        WHERE course = ?', array($this->courseid));
-            for ($sectionnum = $maxsection; $sectionnum > $numsections; $sectionnum--) {
-                if (!$this->delete_section($sectionnum, false)) {
-                    break;
-                }
-            }
-        }
-        return $changed;
+        return $this->update_format_options($data);
     }
-
     /**
      * Whether this format allows to delete sections
      *
@@ -414,13 +360,13 @@ class format_topics extends format_base {
  * @param mixed $newvalue
  * @return \core\output\inplace_editable
  */
-function format_topics_inplace_editable($itemtype, $itemid, $newvalue) {
+function format_topicsrev_inplace_editable($itemtype, $itemid, $newvalue) {
     global $DB, $CFG;
     require_once($CFG->dirroot . '/course/lib.php');
     if ($itemtype === 'sectionname' || $itemtype === 'sectionnamenl') {
         $section = $DB->get_record_sql(
             'SELECT s.* FROM {course_sections} s JOIN {course} c ON s.course = c.id WHERE s.id = ? AND c.format = ?',
-            array($itemid, 'topics'), MUST_EXIST);
+            array($itemid, 'topicsrev'), MUST_EXIST);
         return course_get_format($section->course)->inplace_editable_update_section_name($section, $itemtype, $newvalue);
     }
 }
