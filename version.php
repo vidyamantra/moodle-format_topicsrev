@@ -18,15 +18,13 @@
  * Version details
  *
  * @package    format
- * @subpackage topicsrev
- * @copyright 2014 onwards Krishna Pratap Singh  {@link krishna@vidyamanntra.com}
+ * @subpackage topics
+ * @copyright  1999 onwards Martin Dougiamas (http://dougiamas.com)
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
 
 defined('MOODLE_INTERNAL') || die();
 
-$plugin->version   = 2014101500;        // The current plugin version (Date: YYYYMMDDXX).
-$plugin->requires  = 2014041100;        // Requires this Moodle version.
-$plugin->component = 'format_topicsrev';    // Full name of the plugin (used for diagnostics).
-$plugin->release = '1.0 for Moodle 2.7+';
-$plugin->maturity  = MATURITY_RC;
+$plugin->version   = 2016052300;        // The current plugin version (Date: YYYYMMDDXX).
+$plugin->requires  = 2016051900;        // Requires this Moodle version.
+$plugin->component = 'format_topics';    // Full name of the plugin (used for diagnostics).
